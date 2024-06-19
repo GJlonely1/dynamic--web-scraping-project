@@ -19,15 +19,15 @@ headers = {
 }
 
 response = session.get(url)
-response.html.render(sleep=2)
+response.html.render()
 
 # print (response.html)
 # print (response.html.find('div.card-jfy-wrapper'))
 soup = BeautifulSoup(response.html.html, 'html.parser')
-products = soup.find_all('div', class_='ripple-container')
+products = soup.find_all('a', class_='ripple-container')
 
 for product in products:
-    product_name = product.find('class.card-jfy-title').text
+    product_name = product.find('class.card-jfy-title')
     
     print (product_name)
 
